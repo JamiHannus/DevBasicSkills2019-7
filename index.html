@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+
+
+</head>
+
+<body>
+
+
+    <div>
+        <div>
+            <p>This is a conversion tool. Just choose a input field <p>
+            <p>to type and it will calculate in dec,hex,octa and binary</p>
+        </div>
+        <div>
+            <div>
+            dec <input value="0" oninput="conversionfromdec()"
+             type="number" name="dec" id="mathDec">
+            </div>
+            <div>
+            bin<input oninput="conversionfrombin()" value="0" type="number" name="bin" id="mathBin">
+            </div>
+            <div>
+            octa<input oninput="conversionfromocta()" value="0" type="number" name="octa" id="mathOcta">
+            </div>
+            <div>
+            hexa<input oninput="conversionfromhex()" value="0" type="text" name="hex" id="mathHex">
+            </div>
+        </div>
+    </div>
+
+<div>
+    plase type in number
+    <input type="number" name="input number" id="number_from">
+    <div>
+        number in binary is <span id="myOut"></span>
+
+        <p id="myOut"></p>
+    </div>
+    
+    
+    <div>
+        plase type in number to convert to hex
+        <input type="number" name="input number" id="number_from_hex">
+        <div>
+            number in hex is <span id="myOutHex"></span>
+            <p id="myOutHex"></p>
+        </div>
+    </div>
+    <div>
+        plase type in number to convert to octa
+        <input type="number" name="input number" id="number_from_octa">
+        <div>
+            number in octa is <span id="myOutOcta"></span>
+            <p id="myOutOcta"></p>
+        </div>
+    </div>    
+    <div>
+        <button onclick="dectoBin()" id="">test function bin </button>
+    </div>
+    <div>
+        <button onclick="dectoHex()" id="">test function hex </button>
+    </div>
+    <div>
+        <button onclick="dectoOcta()" id="">test function octa </button>
+    </div>
+    <div>
+        <button onclick="dectoBinMath()">Maths </button>
+
+        plase type in number to convert to bin with maths
+
+        <input type="number" name="input number" id="number_from_math">
+        <div>
+            number in bin math <span id="myOutMath"></span>
+            <p id="myOutMath"></p>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+
+<script type="text/javascript" src="Task 1 and 2.js">
+hello
+</script>
