@@ -7,12 +7,12 @@
 
 
 //permutation
-//P(m , n) = m!/(m-n)!
-// m objects number
-// n how many to pick
+//P(n, r) = n!/(n-e)!
+// n objects number
+// r how many to pick
 
 //combinations
-//C(m,n)= m!/n!(m-n)!
+//C(n,r)= n!/r!(n-r)!
 
 
 
@@ -45,4 +45,29 @@ function combinations(n,r){
         return product_Range(r+1,n)/product_Range(1,n-r);
     }
 }
-console.log(combinations(6,2))
+
+function factorial(f){
+    return( f != 1) ? f * factorial(f -1) : 1 ;
+}
+function permutationWithRep(n){
+    if (n == 1){
+        return 1;
+    }
+    else{
+        return factorial(n);
+    }
+}
+function permutation(n,r){
+    x = n-r;
+// x is the divider. so n!/!x
+    if (n == r){
+    return 1;
+    }
+    else{
+    return factorial(n) / factorial(x);
+    }
+}
+console.log(combinations(5,2))
+console.log(factorial(5))
+console.log(permutation(5,2));
+console.log(permutationWithRep(5,4));
