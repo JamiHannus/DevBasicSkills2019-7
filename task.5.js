@@ -20,7 +20,6 @@ function randomInRange(a,b,c){
 }
 
 function Classify(){
-var num1 ;
 var naturalNumber       = 0 ;
 var wholeNumber         = 0 ;
 var integer             = 0 ;
@@ -30,13 +29,14 @@ var realNumber          = 0 ;
 var a =1; //document.querySelector("#ranValMin").value;
 var b =3; //document.querySelector("#ranValMax").value;
 var c =10; //document.querySelector("#ranPicks").value;
-var set
+var set;
+var set2 =[];
 set = randomInRange(a,b,c) ;
+set2 = Array.from(set);
 i = set.length
 
     while ( i > 0 ){
-    num1= +set.pop.value;
-
+    num1= set.pop();
         if(num1 !== 0){
             naturalNumber ++;
         }
@@ -56,6 +56,6 @@ console.log(integer);
 console.log(rationalNumber);
 console.log(irrationalNumbers);
 console.log(realNumber)
-return set;
+console.log(set2);
 }
 console.log(Classify())
