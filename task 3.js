@@ -7,7 +7,7 @@
 
 
 //permutation
-//P(n, r) = n!/(n-e)!
+//P(n, r) = n!/(n-r)!
 // n objects number
 // r how many to pick
 
@@ -49,12 +49,12 @@ function combinations(n,r){
 function factorial(f){
     return( f != 1) ? f * factorial(f -1) : 1 ;
 }
-function permutationWithRep(n){
+function permutationWithRep(n,r){
     if (n == 1){
         return 1;
     }
     else{
-        return factorial(n);
+        return Math.pow(n,r);
     }
 }
 function permutation(n,r){
