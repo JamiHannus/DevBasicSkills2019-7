@@ -11,10 +11,13 @@
 function randomInRange(a,b,c){
     var random = []
     while (c > 0){
-    test = Math.floor(Math.random() * b) + a ;
-    random.push(test)
+    test = (Math.random() * b) + a;
+    testRounded = Math.round(test *10) / 10 ;
+    random.push(testRounded)
     c --;
     }
     return random
 }
+
+
 console.log(randomInRange(1,5,5));
