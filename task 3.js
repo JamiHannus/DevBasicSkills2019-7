@@ -67,7 +67,7 @@ function permutation(n,r){
     return factorial(n) / factorial(x);
     }
 }
-console.log(combinations(5,2))
-console.log(factorial(5))
-console.log(permutation(5,2));
-console.log(permutationWithRep(5,4));
+// console.log(combinations(5,2))
+// console.log(factorial(5))
+// console.log(permutation(5,2));
+// console.log(permutationWithRep(5,4));
