@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Math">
+    <meta name="keywords" content="numbering system convertion, decimal to binary to octal to hexadecimal, ">
+    <meta name="author" content="Abdeljalil Misbah, Jami Hannus">
+    <title>Math Tool | Welcome</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script>
+        function myFunction() {
+            var x = document.getElementById("table");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        (function() {
+
+            'use strict';
+
+            var SgConverter = function() {
+                var that = this;
+
+                this.converters = ['decimal', 'hexadecimal', 'binary', 'octal'];
+                this.inputElements = {};
+
+                this.decimalToHexadecimal = function(decimalValue) {
+                    return parseInt(decimalValue, 10).toString(16);
+                };
+
+                this.decimalToBinary = function(decimalValue) {
+                    return parseInt(decimalValue, 10).toString(2);
+                };
+                this.decimalToOctal = function(decimalValue) {
+                    return parseInt(decimalValue, 10).toString(8);
+                };
+
+                this.hexadecimalToDecimal = function(hexadecimalValue) {
+                    return parseInt(hexadecimalValue, 16);
+                };
+
+                this.hexadecimalToBinary = function(hexadecimalValue) {
+                    return (parseInt(hexadecimalValue, 16)).toString(2);
+                };
+                this.hexadecimalToOctal = function(hexadecimalValue) {
+                    return (parseInt(hexadecimalValue, 16)).toString(8);
+                };
+
+                this.binaryToDecimal = function(binaryValue) {
+                    return parseInt(binaryValue, 2);
+                };
+
+                this.binaryToHexadecimal = function(binaryValue) {
+                    return (parseInt(binaryValue, 2)).toString(16);
+                };
+                this.binaryToOctal = function(binaryValue) {
+                    return (parseInt(binaryValue, 2)).toString(8);
+                };
+
+                this.convert = function(sourceType) {
+                    var sourceValue = this.inputElements[sourceType].value;
+                    this.converters.forEach(function(converter) {
+                        if (converter !== sourceType) {
+                            var ucConverter = converter.charAt(0).toUpperCase() + converter.slice(1);
+                            var converterMethod = sourceType + 'To' + ucConverter;
+                            that.inputElements[converter].value = that[converterMethod](sourceValue);
+                        }
+                    });
+                };
+                // convert
+                this.update = function(event) {
+                    that.convert(event.target.id);
+                };
+
+            }; // <---End of convertion functions
+
+            // onEnterKey
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('decimal').focus();
+                var sgConverter = new SgConverter();
+                sgConverter.converters.forEach(function(converter) {
+                    sgConverter.inputElements[converter] = document.getElementById(converter);
+
+                    // WithButtonconvert
+                    // document.getElementById(converter).nextElementSibling.addEventListener('click', function() {
+                    //     sgConverter.convert(converter);
+                    // }, false);
+
+                    ['keyup', 'change'].forEach(function(event) {
+                        document.getElementById(converter).addEventListener(event, sgConverter.update, false);
+                    });
+
+                });
+            });
+
+
+        }()); // <---End of function mother
+    </script>
+</head>
+
+<body onLoad="window.scroll(0, 0)">
+    <header>
+        <div class="container">
+            <div id="brand">
+                <h1>Dev<span class="logo">Tool</span></h1>
+            </div>
+            <nav class="navBar">
+                <ul>
+                    <li class="current"><a href="index.html">Converter</a></li>
+                    <li><a href="combinatorial.html">Combinatorics</a></li>
+                    <li><a href="generator.html">Generator</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="showCase1" id="showcase1">
+        <div class="container">
+            <h1>Numeral Systems</h1>
+            <p>Convert numbers from decimal base to binary, octal and hexadecimal bases... and vice versa.</p>
+        </div>
+    </section>
+
+
+
+    <!-- orangeCase -->
+    <section>
+        <div class="scrollCase" onclick="window.location.href = '#conversionFormSection'">Numeral systems converter</div>
+    </section>
+
+
+    <section id="conversionFormSection" class="container">
+
+
+        <form class='conversionForm'>
+            <div>
+                <div class="convertFormGroup">
+                    <label for="decimal">Decimal</label>
+                    <input type="text" id="decimal" name="decimal" placeholder="digits between 0 and 9" autocomplete="off">
+                    <!-- <input type="button" value="Convert"> -->
+                </div>
+
+                <div class="convertFormGroup">
+                    <label for="binary">Binary</label>
+                    <input type="text" id="binary" name="binary" placeholder="digits between 0 and 1" autocomplete="off">
+                    <!-- <input type="button" value="Convert"> -->
+                </div>
+
+                <div class="convertFormGroup">
+                    <label for="octal">Octal</label>
+                    <input type="text" id="octal" name="octal" placeholder="digits between 0 and 7" autocomplete="off">
+                    <!-- <input type="button" value="Convert"> -->
+                </div>
+
+                <div class="convertFormGroup">
+                    <label for="hexadecimal">Hexadecimal</label>
+                    <input type="text" id="hexadecimal" name="hexadecimal" placeholder="digits between 0 and F" autocomplete="off">
+                    <!-- <input type="button" value="Convert"> -->
+                </div>
+        </form>
+    </section>
+
+
+
+
+
+    <!-- orangeCase -->
+    <section>
+        <div class="scrollCase" onclick="window.location.href = '#conversionTableSection'">Numeral systems conversion table</div>
+    </section>
+
+
+    <section id="conversionTableSection" class="container">
+        <div>
+            <div class="hideButton">
+                <button class="button" onclick="myFunction()">Hide table</button>
+            </div>
+
+            <div id="table" class="conversionTable">
+                <script>
+                    document.write("<table style='width: 100%;'>");
+                    document.write("<tr style=';font-size:1.1em;color:#F68B1F;background-color:#fff;'>");
+
+                    for (i = 1; i < 2; i++) {
+                        document.write("<th> Decimal </th>");
+                        document.write("<th> Binary</th>");
+                        document.write("<th> Octal</th>");
+                        document.write("<th> Hexadecimal</th>");
+                    }
+
+                    for (k = 1; k <= 50; k++) {
+                        var colorCode = "";
+                        if (k % 2 === 0) {
+                            colorCode = "#f9f9f9";
+                        } else {
+                            colorCode = "#fef1e4";
+                        }
+
+                        document.write("<tr style='background-color:" + colorCode + "'>");
+
+                        for (j = 1; j <= 1; j++) {
+                            document.write("<td style='font-size:18px;color:#a6a6a6;'>" + k + "</td>");
+                            document.write("<td style='font-size:18px;color:#a6a6a6;'>" + k.toString(2) + "</td>");
+                            document.write("<td style='font-size:18px;color:#a6a6a6;'>" + k.toString(8) + "</td>");
+                            document.write("<td style='font-size:18px;color:#a6a6a6;'>" + k.toString(16) + "</td>");
+                        }
+
+                    }
+
+                    document.write("</table>");
+                </script>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <p>Designed by Abdeljalil Misbah & Jami Hannus, OAMK 2019</p>
+
+    </footer>
+
+
+</body>
+
+
+</html>

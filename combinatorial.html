@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Math">
+    <meta name="keywords" content="numbering system convertion, decimal to binary to octal to hexadecimal, ">
+    <meta name="author" content="Abdeljalil Misbah, Jami Hannus">
+    <title>Math Tool | Welcome</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script>
+        function myFunction() {
+            var x = document.getElementById("table");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function comb() {
+            var n = parseFloat(document.getElementById('n').value);
+            var r = parseFloat(document.getElementById('r').value);
+            var oper = document.getElementById('operators').value;
+
+            if (oper === 'ncr') {
+                function product_Range(a, b) {
+                    var prd = a,
+                        i = a;
+                    while (i++ < b) {
+                        prd *= i;
+                    }
+                    return prd;
+                }
+
+                function combinations() {
+                    if (n == r) {
+                        return 1;
+                    } else if (n < r) {
+                        return "n needs to be greater than r!";
+                    } else {
+                        r = (r < n - r) ? n - r : r;
+                        return product_Range(r + 1, n) / product_Range(1, n - r);
+                    }
+                }
+                document.getElementById('result').value = combinations(n, r);
+            }
+            if (oper === 'npr') {
+
+                function factorial(n, r) {
+                    if (n === 0) {
+                        return 1;
+                    }
+                    return n * factorial(n - 1);
+
+                }
+
+                function permutation() {
+
+                    return factorial(n) / factorial(n - r);
+                }
+                document.getElementById('result').value = permutation(n, r);
+            }
+            if (oper === 'rp') {
+                function rep(n, r) {
+                    return Math.pow(n, r);
+                }
+                document.getElementById('result').value = rep(n, r);
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div id="brand">
+                <h1>Dev<span class="logo">Tool</span></h1>
+            </div>
+            <nav class="navBar">
+                <ul>
+                    <li><a href="index.html">Converter</a></li>
+                    <li class="current"><a href="combinatorial.html">Combinatorics</a></li>
+                    <li><a href="generator.html">Generator</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="showCase2" id="showcase1">
+        <div class="container">
+            <h1>Combinatorics</h1>
+            <p>Calculate the Combinations of choosing r distinct objects out of a collection of n objects</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="scrollCase" onclick="window.location.href = '#combinSection'">Combinations calculator</div>
+    </section>
+
+
+
+    <section id="combinSection" class="container">
+        <div class="combinForm">
+            <div><input type="text" id="n" placeholder="total amount in a set n" autocomplete="off" /></div>
+            <div><input type="text" id="r" placeholder="amount in each subset r" autocomplete="off" /></div>
+            <div class="combinSelectOptions">
+                <select id="operators">
+                    <option value="ncr">combination without repetition</option>
+                    <option value="npr">permutation without repetition </option>
+                    <option value="rp">permutation with repetition</option>
+                </select>
+            </div>
+            <div> <button type="submit" class="buttonB" onclick="comb()">Calculate</button></div>
+            <div><input type="text" id="result" placeholder="result" autocomplete="off" /></div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="scrollCase" onclick="window.location.href = '#truthTableSection'">Truth tables</div>
+    </section>
+
+
+    <section id="truthTableSection" class="container">
+        <div id="truthTable">
+            <div class="hideButton">
+                <button class="button" onclick="myFunction()">Hide table</button>
+            </div>
+
+            <div id="table">
+                <table class="truthTable" id="thTable">
+                    <!--  Row Number 0 -->
+                    <tr>
+                        <th>p</th>
+                        <th>q</th>
+                        <th>q'</th>
+                        <th>p &#8743 q</th>
+                        <th>p &#8744 q</th>
+                        <th>p &#8891 q</th>
+                        <th>(p &#8744 q)'</th>
+                        <th>(p &#8743 q)'</th>
+                    </tr>
+
+                </table>
+                <script>
+                    var t = '1';
+                    var f = '0';
+
+                    var array = [
+                            [f, f, t, f & f, f | f, f ^ f, !(f | f) * 1, ~(f & f) * -1],
+                            [f, t, f, f & t, f | t, f ^ t, !(f | t) * -1, ~(f & t) * -1],
+                            [t, f, null, t & f, t | f, t ^ f, !(t | f) * -1, !(t & f) * 1],
+                            [t, t, null, t & t, t | t, t ^ t, !(t | t) * -1, !(t & t) * 1],
+                        ],
+                        table = document.getElementById("thTable");
+
+                    for (var i = 0; i < array.length; i++) {
+                        // create a new row
+                        var newRow = table.insertRow(table.length);
+                        for (var j = 0; j < array[i].length; j++) {
+                            // create a new cell
+                            var cell = newRow.insertCell(j);
+
+                            // add value to the cell
+                            cell.innerHTML = array[i][j];
+                        }
+                    }
+                </script>
+            </div>
+    </section>
+
+
+
+    <footer>
+        <p>Designed by Abdeljalil Misbah & Jami Hannus, OAMK 2019</p>
+
+    </footer>
+
+
+</body>
+
+
+</html>
